@@ -65,7 +65,8 @@ object Homework :
   end `Fermat Numbers`
 
   object `Look-and-say Sequence` :
-    val lookAndSaySequenceElement: Int => BigInt = ???
+    val lookAndSaySequenceElement: Int => BigInt = BigInt(_)
+      
 
   end `Look-and-say Sequence`
 
