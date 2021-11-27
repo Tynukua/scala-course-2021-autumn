@@ -42,21 +42,24 @@ object Homework :
 
     def not(b: Boolean): Boolean = if (b) false else true
 
-    def and(left: Boolean, right: Boolean): Boolean = if (not left) false else if (not right) false else true
+    def and(left: Boolean, right: Boolean): Boolean = 
+      if (not (left)) false else if (not(right)) false else true
 
-    def or(left: Boolean, right: Boolean): Boolean = if (left) true else if (right) true else false
+    def or(left: Boolean, right: Boolean): Boolean = 
+      if (left) true else if (right) true else false
 
   end `Boolean Operators`
 
   object `Fermat Numbers` :
 
     val multiplication: (BigInt, BigInt) => BigInt = (l: BigInt, r: BigInt) => 
-      List(0 to r).map(x=>l).fold(1)((a,b)=>a*b)
+      List(BigInt(0) to r).map(x=>l).fold(BigInt(0))(_+_)
 
     val power: (BigInt, BigInt) => BigInt = (r: BigInt, l: BigInt) => 
-      List(0 to r).map(x=>l).fold(1)((a,b)=>multiplication(a, b))
+      List(BigInt(0) to r).map(x=>l).fold(BigInt(1))(multiplication(_,_))
 
-    val fermatNumber: Int => BigInt = (a: Int) => power(BigInt(2), power(BigInt(2), a )) 
+    val fermatNumber: Int => BigInt = 
+      (a: Int) => power(BigInt(2), power(BigInt(2), a )) 
 
 
   end `Fermat Numbers`
