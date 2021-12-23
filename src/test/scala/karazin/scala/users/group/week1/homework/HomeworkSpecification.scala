@@ -47,7 +47,7 @@ object FermatNumbersSpecification extends Properties("Fermat Numbers"):
   }
 
   property("fermatNumber") = forAll { (n: Int) =>
-    fermatNumber(n) == Math.pow(2, Math.pow(2, 2)) + 1
+    fermatNumber(n) == power(2, power(2, n)) + 1
   }  
 
 end FermatNumbersSpecification

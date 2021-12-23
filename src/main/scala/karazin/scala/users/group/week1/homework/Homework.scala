@@ -60,13 +60,25 @@ object Homework :
   object `Fermat Numbers` :
 
     val multiplication: (BigInt, BigInt) => BigInt = (l: BigInt, r: BigInt) => 
-      List(BigInt(0) to r).map(x=>l).fold(BigInt(0))(_+_)
+      if l != BigInt(0) then
+        r + multiplication(l - l.sign, r)
+      else 
+        l
 
     val power: (BigInt, BigInt) => BigInt = (r: BigInt, l: BigInt) => 
-      List(BigInt(0) to r).map(x=>l).fold(BigInt(1))(multiplication(_,_))
+      if l == BigInt(0) then
+        1
+      else
+        if l > 0 then
+          multiplication(r, power(r, l - l.sign))
+        else
+          power(r, l - l.sign) / r
+
 
     val fermatNumber: Int => BigInt = 
-      (a: Int) => power(BigInt(2), power(BigInt(2), a )) 
+      (a: Int) => 
+        var res = power(BigInt(2), power(BigInt(2), a)) + 1
+        res
 
 
   end `Fermat Numbers`
