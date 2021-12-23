@@ -55,7 +55,13 @@ object Homework:
 
     private lazy val g = gcd(abs(x), y)
 
-    override def equals(other: Any): Boolean = ???
+    override def equals(other: Any): Boolean = 
+      if other.isInstanceOf[Int] then
+        Rational(other.asInstanceOf[Int]) == this
+      else if other.isInstanceOf[Rational] then
+        other.asInstanceOf[Rational] == this
+      else 
+        false
 
   end Rational
 
