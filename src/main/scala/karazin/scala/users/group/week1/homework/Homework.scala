@@ -1,6 +1,7 @@
 package karazin.scala.users.group.week1.homework
 
 import scala.annotation.tailrec
+import scala.compiletime.ops.string
 /**
  * Preface
  * Implement all the things with ???.
@@ -84,8 +85,27 @@ object Homework :
   end `Fermat Numbers`
 
   object `Look-and-say Sequence` :
-    val lookAndSaySequenceElement: Int => BigInt = BigInt(_)
+    val lookAndSaySequenceElement: Int => BigInt = (n: Int) => 
+      BigInt(lookAndSayInternal(n))
       
+    def lookAndSayInternal(n: Int): String = 
+      if n == 0 then "1"
+      else 
+        val prev = lookAndSayInternal(n-1)
+        var result = "";
+        var curChar = prev charAt 0 ;
+        var curCharCount = 0;
+        for (i <- 0 to prev.length-1)
+          if curChar == prev.charAt(i) then
+            curCharCount = curCharCount+1;
+          else
+            result = result concat curCharCount.toString() concat curChar.toString();
+            curCharCount = 1
+            curChar = prev charAt i
+        // Concating tail seq 
+        result = result concat curCharCount.toString() concat curChar.toString();
+        result
+
 
   end `Look-and-say Sequence`
 

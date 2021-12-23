@@ -56,8 +56,10 @@ object LookAndAaSequenceSpecification extends Properties("Look-and-say Sequence"
   import `Look-and-say Sequence`._
   import arbitraries.given Arbitrary[Int]
 
-  property("fermatNumber") = forAll { (n: Int) =>
-    lookAndSaySequenceElement(n) == 42
+  var answers = Array("1", "11", "21", "1211", "111221", "312211", "13112221", "1113213211")
+  property("fermatNumber") = forAll { (n: Int) => 
+    val res = lookAndSaySequenceElement(n%8)
+    res == BigInt(answers(n%8) )
   }  
 
 end LookAndAaSequenceSpecification
