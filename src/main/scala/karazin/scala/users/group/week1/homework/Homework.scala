@@ -44,17 +44,14 @@ object Homework :
     def not(b: Boolean): Boolean = if b then false else true
 
     def and(left: Boolean, right: Boolean): Boolean = 
-      if not(left) then
-        false
-      else if not(right) then
-        false
-      else
-        true
+      if left then right
+      else false
     end and
         
 
     def or(left: Boolean, right: Boolean): Boolean = 
-      if (left) true else if (right) true else false
+      if ! left then right
+      else true
 
   end `Boolean Operators`
 
