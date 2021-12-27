@@ -41,7 +41,7 @@ object Homework :
 
   object `Boolean Operators` :
 
-    def not(b: Boolean): Boolean = if (b) false else true
+    def not(b: Boolean): Boolean = if b then false else true
 
     def and(left: Boolean, right: Boolean): Boolean = 
       if not(left) then
@@ -78,8 +78,7 @@ object Homework :
 
     val fermatNumber: Int => BigInt = 
       (a: Int) => 
-        var res = power(BigInt(2), power(BigInt(2), a)) + 1
-        res
+        power(BigInt(2), power(BigInt(2), a)) + 1
 
 
   end `Fermat Numbers`
