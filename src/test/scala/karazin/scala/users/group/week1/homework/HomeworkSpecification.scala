@@ -23,13 +23,19 @@ object BooleanOperatorsSpecification extends Properties("Boolean Operators"):
   property("and") = forAll { (pair: (Boolean, Boolean)) =>
     val (left, right) = pair
     
-    and(left, right) == (left && right)
+    val test1 = and(left, right) == (left && right)
+    def infinite():Boolean = !infinite()
+    val test2 = and(false, infinite() ) == false
+    test1 && test2
   }
 
   property("or") = forAll { (pair: (Boolean, Boolean)) =>
     val (left, right) = pair
     
-    or(left, right) == (left || right)
+    val test1 = or(left, right) == (left || right)
+    def infinite():Boolean = !infinite()
+    val test2 = or(true, infinite() ) == true
+    test1 && test2
   }   
 
 end BooleanOperatorsSpecification
